@@ -16,24 +16,25 @@ const BrandLogosBar = () => {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section ref={ref} className="border-y border-border/30 py-12">
+    <section ref={ref} className="py-16">
       <div className="container mx-auto px-6">
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-8 text-center text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground"
+          className="mb-10 text-center font-display text-lg italic text-muted-foreground"
         >
           Some of the brands that challenge us.
         </motion.p>
-        <div className="overflow-hidden">
+        <div className="overflow-hidden border-y border-border py-6">
           <div className="animate-marquee flex whitespace-nowrap">
             {[...brands, ...brands, ...brands].map((brand, i) => (
               <span
                 key={i}
-                className="mx-8 text-lg font-semibold text-muted-foreground/60 transition-colors hover:text-foreground sm:text-xl"
+                className="mx-10 text-xl font-medium text-foreground/30 transition-colors hover:text-foreground sm:text-2xl"
               >
                 {brand}
+                <span className="ml-10 text-primary">●</span>
               </span>
             ))}
           </div>

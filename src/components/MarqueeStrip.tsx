@@ -15,15 +15,15 @@ const items = [
 
 const MarqueeStrip = () => {
   return (
-    <div className="overflow-hidden border-y border-border/30 bg-secondary/20 py-4">
+    <div className="overflow-hidden py-3">
       <div className="animate-marquee flex whitespace-nowrap">
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="mx-6 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground"
+            className="mx-8 text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground"
           >
             {item}
-            <span className="ml-6 text-primary">✦</span>
+            <span className="ml-8 text-primary">●</span>
           </span>
         ))}
       </div>

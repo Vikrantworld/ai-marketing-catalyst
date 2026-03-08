@@ -50,61 +50,22 @@ const ProcessSection = () => {
           </h2>
         </motion.div>
 
-        <div className="relative mt-16">
-          {/* Vertical line */}
-          <div className="absolute left-6 top-0 hidden h-full w-px bg-border/50 lg:left-1/2 lg:block" />
-
-          <div className="space-y-8 lg:space-y-12">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className={`relative flex flex-col gap-6 lg:flex-row lg:items-center ${
-                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="flex-1 lg:text-right">
-                  {i % 2 === 0 && (
-                    <div className="rounded-2xl border border-border/50 bg-card p-8 transition-all hover:border-primary/30">
-                      <span className="text-4xl font-extrabold text-primary/20">{step.number}</span>
-                      <h3 className="mt-2 text-2xl font-bold">{step.title}</h3>
-                      <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                        {step.description}
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Center dot */}
-                <div className="relative z-10 hidden h-4 w-4 shrink-0 rounded-full border-2 border-primary bg-background lg:block" />
-
-                <div className="flex-1">
-                  {i % 2 === 1 && (
-                    <div className="rounded-2xl border border-border/50 bg-card p-8 transition-all hover:border-primary/30">
-                      <span className="text-4xl font-extrabold text-primary/20">{step.number}</span>
-                      <h3 className="mt-2 text-2xl font-bold">{step.title}</h3>
-                      <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                        {step.description}
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Mobile layout */}
-                {((i % 2 === 0 && true) || (i % 2 === 1 && true)) && (
-                  <div className="rounded-2xl border border-border/50 bg-card p-8 transition-all hover:border-primary/30 lg:hidden">
-                    <span className="text-4xl font-extrabold text-primary/20">{step.number}</span>
-                    <h3 className="mt-2 text-2xl font-bold">{step.title}</h3>
-                    <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                      {step.description}
-                    </p>
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="group rounded-2xl border border-border/50 bg-card p-8 transition-all hover:border-primary/30 hover:bg-surface-hover"
+            >
+              <span className="text-5xl font-extrabold text-primary/15">{step.number}</span>
+              <h3 className="mt-3 text-xl font-bold">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

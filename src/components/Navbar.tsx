@@ -2,7 +2,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const navItems = ["Home", "Services", "About", "Case Studies", "Blog", "Contact"];
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Our Work", href: "#our-work" },
+  { label: "Blog", href: "#" },
+  { label: "Careers", href: "#" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,21 +21,20 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl"
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2">
+        <a href="#" className="flex items-center gap-1">
           <span className="text-2xl font-display font-extrabold tracking-tight">
-            X9<span className="text-gradient-accent">Media</span>
+            X9<span className="text-gradient-accent">.Media</span>
           </span>
         </a>
 
-        {/* Desktop Nav */}
         <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase().replace(/\s/g, "-")}`}
+              key={item.label}
+              href={item.href}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </div>
@@ -43,16 +48,11 @@ const Navbar = () => {
           Book a Call
         </a>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-foreground md:hidden"
-        >
+        <button onClick={() => setIsOpen(!isOpen)} className="text-foreground md:hidden">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -64,12 +64,12 @@ const Navbar = () => {
             <div className="flex flex-col gap-4 px-6 py-6">
               {navItems.map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(/\s/g, "-")}`}
+                  key={item.label}
+                  href={item.href}
                   onClick={() => setIsOpen(false)}
                   className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))}
               <a

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -17,13 +17,13 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl"
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md"
     >
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-1">
-          <span className="text-2xl font-display font-extrabold tracking-tight">
-            X9<span className="text-gradient-accent">.Media</span>
+      <div className="container mx-auto flex items-center justify-between px-6 py-5">
+        <a href="#" className="flex items-center">
+          <span className="font-display text-2xl italic tracking-tight">
+            X9<span className="not-italic font-body font-semibold">.Media</span>
           </span>
         </a>
 
@@ -32,7 +32,7 @@ const Navbar = () => {
             <a
               key={item.label}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="link-hover text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
             >
               {item.label}
             </a>
@@ -43,9 +43,10 @@ const Navbar = () => {
           href="https://calendly.com/x9media/30min"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90 glow-accent md:block"
+          className="group hidden items-center gap-2 rounded-full bg-foreground px-6 py-2.5 text-sm font-medium text-background transition-all hover:scale-[1.02] md:inline-flex"
         >
           Book a Call
+          <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </a>
 
         <button onClick={() => setIsOpen(!isOpen)} className="text-foreground md:hidden">
@@ -53,30 +54,35 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-border/50 bg-background md:hidden"
+            transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
+            className="overflow-hidden border-t border-border bg-background md:hidden"
           >
-            <div className="flex flex-col gap-4 px-6 py-6">
-              {navItems.map((item) => (
-                <a
+            <div className="flex flex-col gap-1 px-6 py-6">
+              {navItems.map((item, i) => (
+                <motion.a
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="border-b border-border/50 py-4 text-2xl font-display italic text-foreground"
                 >
                   {item.label}
-                </a>
+                </motion.a>
               ))}
               <a
                 href="https://calendly.com/x9media/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-primary-foreground"
+                className="mt-4 rounded-full bg-foreground px-6 py-3 text-center text-sm font-medium text-background"
               >
                 Book a Call
               </a>

@@ -16,7 +16,7 @@ const services = [
     intent: "fill my pipeline with qualified leads on autopilot",
     title: "Lead Generation & Automation",
     description:
-      "End-to-end lead generation systems — from high-converting landing pages and lead magnets to automated nurture sequences that turn cold traffic into booked calls. We integrate with HubSpot, Salesforce, and your existing stack.",
+      "End-to-end lead generation systems — from high-converting landing pages and lead magnets to automated nurture sequences that turn cold traffic into booked calls.",
     capabilities: ["Landing Pages", "Lead Magnets", "CRM Integration", "HubSpot", "Salesforce", "Marketing Automation"],
   },
   {
@@ -56,70 +56,81 @@ const ServicesSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
         >
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-            What We Do
-          </span>
-          <h2 className="mt-4 text-4xl font-extrabold lg:text-5xl">
-            Services purpose-built for <span className="text-gradient-accent">growth.</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Full-stack performance marketing powered by AI. Designed to generate qualified leads, 
-            lower your CPL, and maximise every pound of ad spend.
-          </p>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px w-8 bg-foreground" />
+            <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">
+              What We Do
+            </span>
+          </div>
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <h2 className="text-4xl tracking-tight lg:text-6xl">
+              <span className="font-body font-medium">Services</span>{" "}
+              <span className="font-display italic">purpose-built</span>
+              <br />
+              <span className="font-display italic">for</span>{" "}
+              <span className="font-display italic text-primary">growth.</span>
+            </h2>
+            <p className="max-w-md text-base text-muted-foreground lg:text-right">
+              Full-stack performance marketing powered by AI. Designed to generate qualified leads, 
+              lower your CPL, and maximise every pound of ad spend.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="mt-16 space-y-4">
+        <div className="mt-16">
           {services.map((service, i) => {
             const isExpanded = expandedIndex === i;
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
                 onClick={() => setExpandedIndex(isExpanded ? null : i)}
-                className={`group cursor-pointer rounded-2xl border transition-all duration-300 ${
-                  isExpanded
-                    ? "border-primary/40 bg-card"
-                    : "border-border/50 bg-card/50 hover:border-border hover:bg-card"
-                }`}
+                className="cursor-pointer border-t border-border last:border-b"
               >
-                <div className="flex items-center gap-4 p-6 sm:p-8">
-                  <div className="inline-flex shrink-0 rounded-xl bg-primary/10 p-3">
-                    <service.icon size={24} className="text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                <div className="flex items-center gap-4 py-7 sm:py-8">
+                  <span className="hidden text-sm text-muted-foreground sm:block">
+                    0{i + 1}
+                  </span>
+                  <div className="flex-1">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
                       I want to...
                     </p>
-                    <p className="mt-1 text-lg font-bold sm:text-xl">{service.intent}</p>
+                    <p className="mt-1 font-display text-xl italic sm:text-2xl lg:text-3xl">
+                      {service.intent}
+                    </p>
                   </div>
-                  <ArrowRight
-                    size={20}
-                    className={`shrink-0 text-muted-foreground transition-transform duration-300 ${
-                      isExpanded ? "rotate-90" : ""
+                  <div
+                    className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
+                      isExpanded
+                        ? "border-foreground bg-foreground text-background rotate-90"
+                        : "border-border text-muted-foreground"
                     }`}
-                  />
+                  >
+                    <ArrowRight size={16} />
+                  </div>
                 </div>
 
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] ${
+                    isExpanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="border-t border-border/30 px-6 pb-8 pt-6 sm:px-8">
-                    <h3 className="text-2xl font-extrabold text-gradient-accent">{service.title}</h3>
-                    <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
+                  <div className="pb-8 pl-0 sm:pl-8">
+                    <h3 className="font-display text-2xl italic text-primary lg:text-3xl">
+                      {service.title}
+                    </h3>
+                    <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
                       {service.description}
                     </p>
-                    <div className="mt-5 flex flex-wrap gap-2">
+                    <div className="mt-6 flex flex-wrap gap-2">
                       {service.capabilities.map((cap) => (
                         <span
                           key={cap}
-                          className="rounded-full border border-border/50 bg-secondary/60 px-3 py-1 text-xs font-medium text-muted-foreground"
+                          className="rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground"
                         >
                           {cap}
                         </span>

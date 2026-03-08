@@ -63,16 +63,18 @@ const HeroSection = () => {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
         >
-          An AI-First creative marketing agency helping small to medium-sized businesses 
-          create impact using Artificial Intelligence & Data-Driven strategies.
+          We're not your typical agency. We combine the power of Artificial Intelligence 
+          with data-driven creative strategies to help small & medium businesses 
+          outperform competitors, generate high-quality leads, and build brands 
+          that customers actually remember.
         </motion.p>
 
-        {/* CTA */}
+        {/* CTA row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-10"
+          className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
         >
           <a
             href="https://calendly.com/x9media/30min"
@@ -86,17 +88,29 @@ const HeroSection = () => {
               className="transition-transform group-hover:translate-x-1"
             />
           </a>
+          <span className="text-sm text-muted-foreground">
+            Free 30-min strategy session · No strings attached
+          </span>
         </motion.div>
 
-        {/* Location tag */}
-        <motion.p
+        {/* Stats strip */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="mt-8 text-sm tracking-widest text-muted-foreground uppercase"
+          className="mt-14 flex flex-wrap items-center justify-center gap-8 border-t border-border/40 pt-8"
         >
-          Digital Marketing Agency — Mumbai, India
-        </motion.p>
+          {[
+            { value: "50+", label: "Brands Scaled" },
+            { value: "3x", label: "Avg. ROAS" },
+            { value: "10M+", label: "Leads Generated" },
+          ].map(({ value, label }) => (
+            <div key={label} className="text-center">
+              <p className="text-2xl font-extrabold text-foreground sm:text-3xl">{value}</p>
+              <p className="text-xs tracking-wider text-muted-foreground uppercase">{label}</p>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

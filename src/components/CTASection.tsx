@@ -15,29 +15,29 @@ const CTASection = () => {
           transition={{ duration: 0.7 }}
           className="relative overflow-hidden rounded-3xl border border-border/50 bg-card p-12 text-center lg:p-20"
         >
-          {/* Glow background */}
           <div className="absolute inset-0 bg-grid opacity-10" />
           <div className="absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[100px]" />
 
           <div className="relative">
-            <h2 className="text-4xl font-extrabold lg:text-6xl">
-              Ready to <span className="text-gradient-accent">Grow?</span>
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              Let's Talk
+            </span>
+            <h2 className="mt-4 text-4xl font-extrabold lg:text-6xl">
+              Ready to turn your marketing into a{" "}
+              <span className="text-gradient-accent">growth engine?</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-              We're obsessed with your business' success. Let's talk about how we can 
-              drive incredible results together.
+              Book a free 30-minute strategy call. We'll audit your current setup, identify 
+              quick wins, and map out a plan to scale — whether you work with us or not.
             </p>
             <a
               href="https://calendly.com/x9media/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground transition-all hover:opacity-90 glow-accent"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground transition-all hover:scale-[1.02] hover:opacity-90 glow-accent"
             >
-              Book a Free Consultation
-              <ArrowRight
-                size={20}
-                className="transition-transform group-hover:translate-x-1"
-              />
+              Book Your Free Strategy Call
+              <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </motion.div>

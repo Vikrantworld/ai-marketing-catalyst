@@ -1,6 +1,29 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Cpu, BarChart3, Users, TrendingUp } from "lucide-react";
+
+const valueCards = [
+  {
+    icon: Cpu,
+    title: "AI-First",
+    description: "We use AI to find patterns humans miss. Smarter targeting, faster optimization, higher-converting campaigns.",
+  },
+  {
+    icon: BarChart3,
+    title: "Data-Driven",
+    description: "Every decision backed by real data. We don't guess — we test, measure, and scale what works.",
+  },
+  {
+    icon: Users,
+    title: "Your Team, Extended",
+    description: "We embed ourselves in your business. Your Slack, your goals, your obsession.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Growth-Obsessed",
+    description: "From startups to scale-ups, we build marketing engines that compound growth month after month.",
+  },
+];
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -9,7 +32,8 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-24 lg:py-32" ref={ref}>
       <div className="container mx-auto px-6">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+        {/* Header */}
+        <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -19,52 +43,49 @@ const AboutSection = () => {
               Who We Are
             </span>
             <h2 className="mt-4 text-4xl font-extrabold leading-tight lg:text-5xl">
-              Small Can Also Be{" "}
-              <span className="text-gradient-accent">Mighty.</span>
+              We don't do marketing fluff.{" "}
+              <span className="text-gradient-accent">We drive results.</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              X9 Media was born from a simple conviction: small and medium businesses deserve 
-              the same caliber of marketing firepower as the big players. We're a crew of 
-              passionate strategists, creatives, and AI specialists who genuinely get excited 
-              about watching your brand punch above its weight.
+              X9 Media is an AI-first creative marketing agency built for businesses that refuse 
+              to settle for average. We blend artificial intelligence with battle-tested marketing 
+              strategy to deliver growth that actually moves the needle. Not impressions. Not 
+              vanity metrics. Revenue.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              The secret behind our marketing magic isn't mystical at all — we pride ourselves 
-              on being jargon-busting, data-driven, and deeply human-focused. Every campaign, 
-              every pixel, every line of copy is backed by real data and built with real empathy 
-              for your audience.
+              The secret behind our marketing magic isn't mystical — we're jargon-busting, 
+              data-driven, human-focused marketers who operate as an extension of your team. 
+              Getting to know your business, understanding your audiences, and what truly 
+              matters to both of you — that's how we drive results.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              We don't work <em>for</em> you — we work <em>with</em> you. As an extension of 
-              your own team, we immerse ourselves in your business, understand your customers, 
-              and obsess over what makes them tick. That's how we consistently drive results 
-              that feel almost unfair to your competitors.
+              We're more than a marketing agency. We're obsessed with your business' success.
             </p>
           </motion.div>
 
+          {/* Value Cards */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2"
           >
-            {[
-              { number: "50+", label: "Clients Served" },
-              { number: "3+", label: "Years Experience" },
-              { number: "10x", label: "Average ROI" },
-              { number: "24/7", label: "Support Available" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl border border-border/50 bg-card p-6 text-center transition-colors hover:border-primary/30"
+            {valueCards.map((card, i) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                className="group rounded-2xl border border-border/50 bg-card p-6 transition-all hover:border-primary/30 hover:bg-surface-hover"
               >
-                <div className="text-3xl font-extrabold text-gradient-accent lg:text-4xl">
-                  {stat.number}
+                <div className="mb-3 inline-flex rounded-xl bg-primary/10 p-2.5">
+                  <card.icon size={20} className="text-primary" />
                 </div>
-                <div className="mt-2 text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
-              </div>
+                <h3 className="text-lg font-bold">{card.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {card.description}
+                </p>
+              </motion.div>
             ))}
           </motion.div>
         </div>

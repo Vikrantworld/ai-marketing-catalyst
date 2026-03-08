@@ -2,7 +2,7 @@ const items = [
   "Performance Marketing",
   "Lead Generation",
   "Email Marketing",
-  "AI SEO",
+  "AI SEO & AEO",
   "CRO",
   "B2B Marketing",
   "Web Design",
@@ -15,7 +15,7 @@ const items = [
 
 const MarqueeStrip = () => {
   return (
-    <div className="overflow-hidden border-y border-border/50 bg-secondary/30 py-4">
+    <div className="overflow-hidden border-y border-border/30 bg-secondary/20 py-4">
       <div className="animate-marquee flex whitespace-nowrap">
         {[...items, ...items].map((item, i) => (
           <span

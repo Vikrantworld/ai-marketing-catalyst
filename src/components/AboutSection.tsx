@@ -23,14 +23,22 @@ const AboutSection = () => {
               <span className="text-gradient-accent">Mighty.</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              X9 Media was set up with the belief that taking small consistent steps 
-              will lead to success. We pride ourselves on being jargon-busting, 
-              data-driven, human-focused marketers.
+              X9 Media was born from a simple conviction: small and medium businesses deserve 
+              the same caliber of marketing firepower as the big players. We're a crew of 
+              passionate strategists, creatives, and AI specialists who genuinely get excited 
+              about watching your brand punch above its weight.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              We operate as an extension of your own team — getting to know your business, 
-              understanding your audiences, and what truly matters to both of you is how 
-              we drive incredible results.
+              The secret behind our marketing magic isn't mystical at all — we pride ourselves 
+              on being jargon-busting, data-driven, and deeply human-focused. Every campaign, 
+              every pixel, every line of copy is backed by real data and built with real empathy 
+              for your audience.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              We don't work <em>for</em> you — we work <em>with</em> you. As an extension of 
+              your own team, we immerse ourselves in your business, understand your customers, 
+              and obsess over what makes them tick. That's how we consistently drive results 
+              that feel almost unfair to your competitors.
             </p>
           </motion.div>
 

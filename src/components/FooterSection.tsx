@@ -8,7 +8,7 @@ const FooterSection = () => {
               X9<span className="text-gradient-accent">Media</span>
             </span>
             <p className="mt-1 text-sm text-muted-foreground">
-              AI-First Digital Marketing Agency — Mumbai, India
+              AI-First Digital Marketing Agency
             </p>
           </div>
           <div className="flex gap-8">
